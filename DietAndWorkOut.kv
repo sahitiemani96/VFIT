@@ -1,0 +1,250 @@
+WindowManager:
+    ChooseDietWorkOutPlanScreen:
+    DailyCalorieNeeded:
+    Macro_RATIOS:
+
+
+<ChooseDietWorkOutPlanScreen>:
+    name:"DIET_CHART"
+    BoxLayout:
+        canvas:
+            Color:
+                rgb: utils.get_color_from_hex("#1a73e8")
+            Rectangle:
+                size: self.size
+                pos: self.pos
+        orientation: 'vertical'
+        padding: 20
+        spacing: 20
+        GridLayout
+            cols:2
+            rows:7
+            Label:
+                text: "CHOOSE YOUR DIET PLAN"
+            BoxLayout:
+                CheckBox:
+                    group:"Types_of_Diet"
+                    on_active: root.checkbox_click(self,self.active,"Fruit Diet")
+                Label:
+                    text:"Fruit Diet"
+                CheckBox:
+                    group:"Types_of_Diet"
+                    on_active: root.checkbox_click(self,self.active,"Fruit Diet")
+                Label:
+                    text:"Salt less Diet"
+                CheckBox:
+                    group:"Types_of_Diet"
+                    on_active: root.checkbox_click(self,self.active,"Fruit Diet")
+                Label:
+                    text:"Keto Diet"
+            Label:
+                text: "CHOOSE YOUR BODY TYPE"
+            BoxLayout:
+                CheckBox:
+                    group:"BODYTYPES"
+                    on_active: root.checkbox_click(self,self.active,"under-weight")
+                Label:
+                    text:"under-weight"
+                CheckBox:
+                    group:"BODYTYPES"
+                    on_active: root.checkbox_click(self,self.active,"accurate-weight")
+                Label:
+                    text:"accurate-weight"
+                CheckBox:
+                    group:"BODYTYPES"
+                    on_active: root.checkbox_click(self,self.active,"Over-weight")
+                Label:
+                    text:"Over-weight"
+            Label:
+                text: "CHOOSE YOUR Workout TYPE"
+            BoxLayout:
+                CheckBox:
+                    group:"Workout-regime"
+                    on_active: root.checkbox_click(self,self.active,"Excercises")
+                Label:
+                    text:"Excercises"
+                CheckBox:
+                    group:"Workout-regime"
+                    on_active: root.checkbox_click(self,self.active,"Yoga")
+                Label:
+                    text:"Yoga"
+            Label:
+                text: "SET CALORIE GOAL"
+            TextInput:
+                text:"123"
+            Button:
+                text:"Cancel"
+            Button:
+                text:"Click"
+                on_release:
+                    app.root.current = "daily_calorie_needed"
+#:import utils kivy.utils
+<DailyCalorieNeeded>:
+    name:"daily_calorie_needed"
+    BoxLayout:
+        canvas:
+            Color:
+                rgb: utils.get_color_from_hex("#1a73e8")
+            Rectangle:
+                size: self.size
+                pos: self.pos
+        orientation: 'vertical'
+        padding: 20
+        spacing: 20
+        GridLayout:
+            canvas.before:
+                Color:
+                    rgba: (255, 255, 255, 255)
+                Line:
+                    width: 1.5
+                    rectangle: self.x, self.y, self.width, self.height
+
+            cols: 1
+            GridLayout:
+                cols: 3
+                padding: 5
+                Label:
+                    text: "DIET-PLAN SELECTION"
+                BoxLayout:
+                    ToggleButton:
+                        text: "MACROPLAN_1KG/WEEK"
+                        group: "x"
+
+                    ToggleButton:
+                        text: "MACROPLAN_2KG/WEEK"
+                        group: "x"
+
+                Label:
+                    text: ""
+                Label:
+                    text: "WorkoutRegime"
+                BoxLayout:
+                    ToggleButton:
+                        text: "CARDIO"
+                        group: "x"
+
+                    ToggleButton:
+                        text: "YOGA"
+                        group: "x"
+
+
+
+
+
+        BoxLayout:
+            orientation: 'vertical'
+            padding: 30
+            Button:
+                text: "SUBMIT"
+                size_hint: 0.5, 0.5
+                pos_hint: {'center_x':.5, 'center_y': .5}
+
+
+        GridLayout:
+            canvas.before:
+                Color:
+                    rgba: (255, 255, 255, 255)
+                Line:
+                    width: 1.5
+                    rectangle: self.x, self.y, self.width, self.height
+            cols: 1
+            Label:
+                text: "Your diet_plan_selected is:"
+            Label:
+                id: user_diet_plan_selected
+                text: "fruit diet"
+
+
+        BoxLayout:
+            orientation: 'horizontal'
+            padding: 30
+            Button:
+                text: "DAILY CALORIES NEED"
+                size_hint: 0.5, 0.5
+                pos_hint: {'center_x':.5, 'center_y': .5}
+                on_release:
+                    app.root.current = "MacroRatioSummary"
+
+
+
+#:import utils kivy.utils
+<Macro_RATIOS>:
+    name:"MacroRatioSummary"
+    BoxLayout:
+        canvas:
+            Color:
+                rgb: utils.get_color_from_hex("#1a73e8")
+            Rectangle:
+                size: self.size
+                pos: self.pos
+        orientation: 'vertical'
+        padding: 20
+        spacing: 20
+        GridLayout:
+            canvas.before:
+                Color:
+                    rgba: (255, 255, 255, 255)
+                Line:
+                    width: 1.5
+                    rectangle: self.x, self.y, self.width, self.height
+
+            cols:2
+            rows:6
+            Label:
+                text:'CALORIES TO BURN PER/DAY'
+            TextInput:
+                text:'2194'
+            Label:
+                text:'MACRO RATIO'
+            TextInput:
+                text:'Moderate'
+            Label:
+                text:'CARBOHYDRATE %'
+            TextInput:
+                text:'50'
+            Label:
+                text:'PROTEIN %'
+            TextInput:
+                text:'50'
+            Label:
+                text:'FAT %'
+            TextInput:
+                text:'20'
+            Label:
+                text:'MEALS PER/DAY'
+            TextInput:
+                text:'3'
+
+        BoxLayout:
+            orientation: 'vertical'
+            padding: 30
+            Button:
+                text: "SUBMIT"
+                size_hint: 0.5, 0.5
+                pos_hint: {'center_x':.5, 'center_y': .5}
+
+
+        GridLayout:
+            canvas.before:
+                Color:
+                    rgba: (255, 255, 255, 255)
+                Line:
+                    width: 1.5
+                    rectangle: self.x, self.y, self.width, self.height
+            cols: 1
+            Label:
+                text: "MACRO RATIOS"
+            Label:
+                id: user_macro_ratio_plan_selected
+                text: "GRAM PER DAY: CARB: 271.5g  PROTEIN: 135.8g  FAT: 60.3g"
+        BoxLayout:
+            orientation: 'horizontal'
+            padding: 30
+            Button:
+                text: "SUMMARY PLAN"
+                size_hint: 0.5, 0.5
+                pos_hint: {'center_x':.5, 'center_y': .5}
+                on_release:
+                    app.change_screen("home_screen")
+
+
